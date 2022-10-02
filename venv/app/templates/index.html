@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Hi, {{ current_user.username }}!</h1>
+    <div><p>Here are updates:</p></div>
+    {% for offer in new_offers%}
+    <div><p>Offer {{ offer.title }} added: <b> price: {{ offer.title }}</b></p></div>
+    {% endfor %}
+{% endblock %}

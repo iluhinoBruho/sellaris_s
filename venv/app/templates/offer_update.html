@@ -1,0 +1,18 @@
+{% extends 'base.html' %}  
+
+
+{% block body%}
+<div class="container mt-5">
+  <h1>Editting offer</h1>
+  <p></p>
+  <form method="post">
+    <input type="text" name="item_name" id="item_name" class="form-control" value="{{ offer.item_name }}"><br>
+    <input type="number" name="price" id="price" class="form-control" value="{{ offer.price }}"><br>
+    <textarea name="descr" id="descr" class="form-control">{{ offer.descr }}</textarea><br>
+    <input type="submit" class="btn btn-success" value="Commit"><br>
+  </form>
+  <p></p>
+  <a class="btn btn-outline-primary"<a href="{{ url_for('offer_detail', id=id) }}">Back to offer details</a> </a>
+</div>
+
+{% endblock %}

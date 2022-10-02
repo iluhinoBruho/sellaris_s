@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block title%}
+
+
+{% endblock %}
+
+
+
+
+
+{% block body%}
+
+
+<style>
+
+*{
+ margin: 0; padding: 0;
+ box-sizing: border-box;
+ transition: all .2s linear;
+}
+
+
+.imageheader{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90%;
+    margin:0 auto;
+}
+
+.imageheader a{
+    height:400px;
+    width:600px;
+    margin:20px;
+    border-radius: 5px;
+    overflow:hidden;
+    box-shadow: 0 3px 5px #000;
+}
+
+.imageheader a img{
+    height:100%;
+    width:100%;
+    object-fit:cover;
+}
+
+.imageheader a img:hover{
+    transform:scale(1.4);
+
+}
+
+
+</style>
+
+
+<div class="imageheader">
+        <a href="{{ url_for('single_img', filename=main_image.file_name) }}">
+            <img src="{{ url_for('single_img', filename=main_image.file_name) }}"alt="">
+        </a>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+
+
+
+<div class="container mt-5">
+    <h1>{{ offer.item_name }}</h1>
+    <p>latest update: {{ timestamp }}</p>
+    <p></p>
+    <div class="alert alert-info">
+        {% if user == author.id %}
+        <a class="btn btn-success" href="/offers/{{ offer.id }}/upload_images">Add images [not functional]</a>
+        <a href="/offers/{{ offer.id }}/update" class="btn btn-warning">Edit</a>
+        <a href="/offers/{{ offer.id }}/delete" class="btn btn-danger">Delete</a>
+        <p></p>
+
+        {% endif %}
+        {% if user != author.id %}
+        {% if taken == 0 %}
+            <a href="/offers/{{ offer.id }}" class="btn btn-warning"><h1>Add to wish list [not functinal]</h1></a>
+        {% endif %}
+        <p></p>
+        <p>Author: {{author.username}}</p>
+        {% endif %}
+        <p></p>
+        <p>Price: {{ offer.price }}</p>
+        
+        
+        <div class="alert alert-info"> 
+        
+        
+        <pre style="fond-size:50px">
+            <b>{{ offer.descr }}</b>
+        </pre>
+        </div>
+
+    </div>
+</div>
+
+<!--<link rel="stylesheet" href="css/gallery.css">-->
+<style>
+*{
+ margin: 0; padding: 0;
+ box-sizing: border-box;
+ transition: all .2s linear;
+}
+
+
+.gallery{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90%;
+    margin:0 auto;
+}
+
+.gallery a{
+    height:200px;
+    width:300px;
+    margin:20px;
+    border-radius: 5px;
+    overflow:hidden;
+    box-shadow: 0 3px 5px #000;
+}
+
+
+.gallery a img{
+    height:100%;
+    width:100%;
+    object-fit:cover;
+}
+
+.gallery a img:hover{
+    transform:scale(1.4);
+}
+</style>
+<!--<link rel="stylesheet" href="css/gallery.css">-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+
+<div class=gallery>
+ {% for img in images %}
+    <a href="{{ url_for('single_img', filename=img.file_name) }}">
+    <img src="{{ url_for('single_img', filename=img.file_name) }}" alt="">
+    </a>
+ {% endfor %}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+
+<script>
+lightGallery(document.querySelector('.gallery'));
+</script>
+{% endblock %}    
+

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block body%}
+<div class="container mt-5">
+    <h1>File Upload</h1>
+    <p></p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/min/dropzone.min.js"></script>
+    {{ dropzone.create(action = url_for('upload_images', id=id)) }}
+    {{ dropzone.config(max_files=10, timeout=10000) }}
+    <p></p>
+    <a class="btn btn-outline-primary"<a href="{{ url_for('offer_detail', id=id) }}">Back to offer details</a> </a>
+    <a class="btn btn-outline-primary"<a href="{{ url_for('offer_update', id=id) }}">Continue edditing offer</a> </a>
+  </body>
+</div>
+{% endblock %}

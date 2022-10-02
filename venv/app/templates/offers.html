@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title%}
+
+{% endblock %}
+
+
+{% block body%}
+<div class="container mt-5">
+    <h1>All offers</h1>
+    <p></p>
+    
+    
+    <a class="btn btn-success" href="/create_offer">Post_offer</a>
+    <p></p>
+    {% for row in offers_pack %}
+    <div class="container">
+      <div class="row">
+        {% for el in row %}
+        <div class="col">
+          <div class="alert alert-info">
+          <h2>{{ el.item_name }}</h2>
+          {%if el.id in offers_img %}
+          
+          
+          
+          <style>
+            
+            *{
+             margin: 0; padding: 0;
+             box-sizing: border-box;
+             transition: all .2s linear;
+            }
+
+
+            .imageheader{
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 90%;
+                margin:0 auto;
+            }
+            
+            .imageheader a{
+                height:200px;
+                width:300px;
+                margin:20px;
+                border-radius: 5px;
+                overflow:hidden;
+                box-shadow: 0 3px 5px #000;
+            }
+            
+            .imageheader a img{
+                height:100%;
+                width:100%;
+                object-fit:cover;
+            }
+            
+            .imageheader a img:hover{
+                transform:scale(1.4);
+            
+            }
+            
+            
+            </style>
+          
+          
+            <div class="imageheader">
+                <!-- <a href="{{ url_for('single_img', filename = offers_img[el.id]) }}">  -->
+                <a href="/offers/{{ el.id }}">
+                    <img src="{{ url_for('single_img', filename = offers_img[el.id]) }}"alt="">
+                </a>
+            </div>
+            
+         
+            <a href="/offers/{{ el.id }}" class="btn btn-warning">Details</a>
+          {% endif %}
+          
+          
+          
+          
+          
+          <p>{{ el.price }}</p>
+          <p>{{ el.descr }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title%}
+
+{% endblock %}
+
+
+{% block body%}
+<div class="container mt-5">
+  <h1>Posting offer</h1>
+  <p></p>
+  <form method="post" enctype=multipart/form-data>
+    <input type="text" name="item_name" id="item_name" class="form-control" placeholder="Object"><br>
+    <input type="number" name="price" id="price" class="form-control" placeholder="Price"><br>
+    <textarea name="descr" id="descr" class="form-control"placeholder="Short description"></textarea><br>
+    <p></p>
+    <input type=file name=file>
+    <p></p>
+    <input type="submit" class="btn btn-success" value="   Post offer   "><br>
+  </form>
+  
+</div>
+
+{% endblock %}

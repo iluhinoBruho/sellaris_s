@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+}
+
+.element-1 {
+    display: flex;
+}
+.element-1 a {
+    width: 25%;
+    padding: .25rem;
+}
+.element-1 img {
+    width: 100%;
+    display: flex;
+}
