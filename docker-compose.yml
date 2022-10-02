@@ -2,7 +2,7 @@ version: '3'
 services:
   flask:
     # Путь до Dockerfile
-    build: ./venv/
+    build: ./venv
     # Имя для создаваемого контейнера
     container_name: lyavolume_test_container
     # Создание переменных окружения в контейнере
